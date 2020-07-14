@@ -2,6 +2,8 @@ package main
 
 import (
 	"errors"
+	"fmt"
+	"os"
 
 	"github.com/manifoldco/promptui"
 )
@@ -65,44 +67,51 @@ func promptSkipCi() (string, error) {
 	return result, err
 }
 
-func collectType(state *CommitState) {
-	commitType, _ := promptType()
+func collectType(state *CommitState) error {
+	commitType, err := promptType()
 	state.info.commitType = commitType
+	return err
 }
 
-func collectScope(state *CommitState) {
-	scope, _ := promptScope()
+func collectScope(state *CommitState) error {
+	scope, err := promptScope()
 	state.info.scope = scope
+	return err
 }
 
-func collectTitle(state *CommitState) {
-	title, _ := promptTitle()
+func collectTitle(state *CommitState) error {
+	title, err := promptTitle()
 	state.info.title = title
+	return err
 }
 
-func collectBody(state *CommitState) {
-	body, _ := promptBody()
+func collectBody(state *CommitState) error {
+	body, err := promptBody()
 	state.info.body = body
+	return err
 }
 
-func collectBreakingChange(state *CommitState) {
-	breakingChange, _ := promptBreakingChange()
+func collectBreakingChange(state *CommitState) error {
+	breakingChange, err := promptBreakingChange()
 	state.info.breakingChange = breakingChange
+	return err
 }
 
-func collectIssues(state *CommitState) {
-	issues, _ := promptIsses()
+func collectIssues(state *CommitState) error {
+	issues, err := promptIsses()
 	state.info.closes = issues
+	return err
 }
 
-func collectSkipCi(state *CommitState) {
-	skipCi, _ := promptSkipCi()
+func collectSkipCi(state *CommitState) error {
+	skipCi, err := promptSkipCi()
 	state.info.skipCi = skipCi == "Yes"
+	return err
 }
 
 // Collector is function that shows use a prompt and populates state
 // with the result use entered.
-type Collector func(state *CommitState)
+type Collector func(state *CommitState) error
 
 var collectors map[string]Collector = map[string]Collector{
 	"type":            collectType,
@@ -117,7 +126,11 @@ var collectors map[string]Collector = map[string]Collector{
 func collectUserInput(state *CommitState) {
 	for _, key := range state.settings.prompts {
 		if collector, ok := collectors[key]; ok {
-			collector(state)
+			err := collector(state)
+			if err != nil {
+				fmt.Printf("Error: %q\n", err.Error())
+				os.Exit(0)
+			}
 		}
 	}
 }

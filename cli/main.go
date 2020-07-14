@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
+
 	state := CommitState{
 		settings: defaultSettings,
 		info:     CommitInfo{},
