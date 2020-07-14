@@ -1,3 +1,6 @@
+download:
+	go mod download
+
 run:
 	go run .
 
