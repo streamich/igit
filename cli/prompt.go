@@ -2,8 +2,7 @@ package main
 
 import (
 	"errors"
-	"fmt"
-	"os"
+	"log"
 
 	"github.com/manifoldco/promptui"
 )
@@ -128,8 +127,7 @@ func collectUserInput(state *CommitState) {
 		if collector, ok := collectors[key]; ok {
 			err := collector(state)
 			if err != nil {
-				fmt.Printf("Error: %q\n", err.Error())
-				os.Exit(0)
+				log.Fatalf("Error: %s\n", err)
 			}
 		}
 	}

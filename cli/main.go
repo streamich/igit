@@ -19,7 +19,7 @@ func main() {
 	cmd := exec.Command("git", "commit", "-m", message)
 	err := cmd.Run()
 	if err != nil {
-		log.Fatalf("cmd.Run() failed with %s\n", err)
+		log.Fatalf("Error: %s\n", err)
 	}
 
 	fmt.Printf("Message: %q\n", message)
