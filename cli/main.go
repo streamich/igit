@@ -34,9 +34,8 @@ a semantic Angular commit, and Git commits it.`,
 					}
 				}
 				if hasScope == false {
-					state.settings.prompts = append(
-						append(state.settings.prompts[0:typeIndex+1], "scope"),
-						state.settings.prompts[typeIndex+1:]...)
+					state.settings.prompts = append(state.settings.prompts[:typeIndex+2], state.settings.prompts[typeIndex + 1:]...)
+					state.settings.prompts[typeIndex + 1] = "scope"
 				}
 			}
 
