@@ -26,7 +26,7 @@ var emojis map[string]string = map[string]string{
 	"feat":     "🎸",
 	"fix":      "🐛",
 	"chore":    "🤖",
-	"docs":     "✏️",
+	"docs":     "📚",
 	"refactor": "💡",
 	"style":    "💄",
 	"ci":       "🎡",

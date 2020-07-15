@@ -6,7 +6,7 @@ import (
 
 func main() {
 	var cmdCommit = createCommitCmd()
-	var rootCmd = &cobra.Command{Use: "app"}
+	var rootCmd = &cobra.Command{Use: "igit"}
 	rootCmd.AddCommand(cmdCommit)
 	rootCmd.Execute()
 }
