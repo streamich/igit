@@ -12,15 +12,14 @@ import (
 func promptType(state *CommitState) (string, error) {
 	typesPresentation := []string{}
 	for _, v := range state.settings.commitTypes {
-		var emoji string
+		typePresentation := v
 		if v, ok := state.settings.emojis[v]; ok {
-			emoji = v
+			typePresentation = v + " " + typePresentation
 		}
-		if emoji != "" {
-			typesPresentation = append(typesPresentation, emoji+" "+v)
-		} else {
-			typesPresentation = append(typesPresentation, v)
+		if v, ok := state.settings.descriptions[v]; ok {
+			typePresentation = typePresentation + " - " + v
 		}
+		typesPresentation = append(typesPresentation, typePresentation)
 	}
 	prompt := promptui.Select{
 		Label: "Type",
