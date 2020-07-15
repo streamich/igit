@@ -1,5 +1,7 @@
 download:
 	go mod download
+	go get -u github.com/mitchellh/gox
+	go get -u github.com/tcnksm/ghr
 
 run:
 	go run . $(ARGS)
