@@ -2,7 +2,6 @@ package main
 
 var prompts []string = []string{
 	"type",
-	"scope",
 	"title",
 	"body",
 	"breaking-change",
