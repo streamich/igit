@@ -4,6 +4,8 @@ import (
 	"errors"
 	"log"
 
+	"github.com/AlecAivazis/survey/v2"
+	"github.com/AlecAivazis/survey/v2/terminal"
 	"github.com/manifoldco/promptui"
 )
 
@@ -37,10 +39,17 @@ func promptTitle() (string, error) {
 }
 
 func promptBody() (string, error) {
-	prompt := promptui.Prompt{
-		Label: "Body",
+	prompt := &survey.Editor{
+		Message:  "Body",
+		Default:  "Ctrl+C to skip",
+		FileName: "*.md",
 	}
-	return prompt.Run()
+	var result string
+	err := survey.AskOne(prompt, &result)
+	if err == terminal.InterruptErr {
+		return "", nil
+	}
+	return result, err
 }
 
 func promptBreakingChange() (string, error) {
