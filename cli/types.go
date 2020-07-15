@@ -57,8 +57,14 @@ type CommitInfo struct {
 	closes string
 }
 
+type commitFlags struct {
+	args  []string
+	scope bool
+}
+
 // CommitState is coplete global state of the CLI tool.
 type CommitState struct {
+	flags    *commitFlags
 	info     CommitInfo
 	settings CommitSettings
 }
