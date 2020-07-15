@@ -1,17 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"github.com/spf13/cobra"
 )
 
 func main() {
-	state := CommitState{
-		settings: defaultSettings,
-		info:     CommitInfo{},
-	}
-
-	collectUserInput(&state)
-	message, _ := formatCommitMessage(&state)
-
-	fmt.Printf("Message: %q\n", message)
+	var cmdCommit = createCommitCmd()
+	var rootCmd = &cobra.Command{Use: "app"}
+	rootCmd.AddCommand(cmdCommit)
+	rootCmd.Execute()
 }

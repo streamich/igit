@@ -15,6 +15,9 @@ type CommitSettings struct {
 
 	// Map of commit types to emojis.
 	emojis map[string]string
+
+	// Map of commit type descriptions.
+	descriptions map[string]string
 }
 
 // CommitInfo is information needed to format a commit message.
@@ -57,8 +60,14 @@ type CommitInfo struct {
 	closes string
 }
 
+type commitFlags struct {
+	args  []string
+	scope bool
+}
+
 // CommitState is coplete global state of the CLI tool.
 type CommitState struct {
+	flags    *commitFlags
 	info     CommitInfo
 	settings CommitSettings
 }
