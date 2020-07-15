@@ -67,7 +67,7 @@ func execCommitCmd(flags *commitFlags) {
 	// user would still see their message. Also, if there are
 	// pre-commit hooks running user can read their messsage
 	// and decide to cancel the commit.
-	fmt.Printf("%s\n", message)
+	fmt.Printf("\n%s\n", message)
 
 	MakeGitCommit(message)
 }
