@@ -9,10 +9,22 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-func promptType() (string, error) {
+func promptType(state *CommitState) (string, error) {
+	typesPresentation := []string{}
+	for _, v := range state.settings.commitTypes {
+		var emoji string
+		if v, ok := state.settings.emojis[v]; ok {
+			emoji = v
+		}
+		if emoji != "" {
+			typesPresentation = append(typesPresentation, emoji+" "+v)
+		} else {
+			typesPresentation = append(typesPresentation, v)
+		}
+	}
 	prompt := promptui.Select{
 		Label: "Type",
-		Items: commitTypes,
+		Items: typesPresentation,
 	}
 	_, result, err := prompt.Run()
 	return result, err
@@ -76,7 +88,7 @@ func promptSkipCi() (string, error) {
 }
 
 func collectType(state *CommitState) error {
-	commitType, err := promptType()
+	commitType, err := promptType(state)
 	state.info.commitType = commitType
 	return err
 }
