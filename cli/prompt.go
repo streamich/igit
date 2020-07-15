@@ -26,8 +26,8 @@ func promptType(state *CommitState) (string, error) {
 		Label: "Type",
 		Items: typesPresentation,
 	}
-	_, result, err := prompt.Run()
-	return result, err
+	index, _, err := prompt.Run()
+	return state.settings.commitTypes[index], err
 }
 
 func promptScope() (string, error) {
