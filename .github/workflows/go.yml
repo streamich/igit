@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-    name: Build
+    name: Build and test
     runs-on: ubuntu-latest
     steps:
 
@@ -35,3 +35,12 @@ jobs:
 
     - name: Test
       run: go test -v cmdcommit
+
+    - name: Generate build files
+      uses: thatisuday/go-cross-build@v1
+      with:
+          platforms: 'linux/amd64, darwin/amd64, windows/amd64'
+          package: ''
+          name: 'igit'
+          compress: 'true'
+          dest: 'dist'
