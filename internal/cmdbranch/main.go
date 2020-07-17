@@ -2,6 +2,7 @@ package cmdbranch
 
 import (
 	"fmt"
+	"gitutils"
 
 	"github.com/spf13/cobra"
 )
@@ -25,7 +26,13 @@ func CreateBranchCmd() *cobra.Command {
 }
 
 func execBranchCmd() {
+	state := &branchState{
+		settings: defaultSettings,
+		info:     branchInfo{},
+	}
 
-	fmt.Printf("\nbranching...\n")
-
+	collectUserInput(state)
+	name := formatBranchName(state)
+	fmt.Printf("\nCreating branch: %s\n", name)
+	gitutils.MakeBranch(name)
 }
