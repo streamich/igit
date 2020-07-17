@@ -2,6 +2,23 @@
 
 Interactive CLI for semantic Git commit messages.
 
+![image](https://user-images.githubusercontent.com/9773803/87804358-0b437600-c854-11ea-8897-60c82dbf7484.png)
+
+
+## Installation
+
+Download from [releases page](https://github.com/streamich/igit/releases) or install using NPM.
+
+```
+npm i -g igit-cli
+```
+
+Or use without installation.
+
+```
+npx igit-cli
+```
+
 
 ## Semantic branch names
 
