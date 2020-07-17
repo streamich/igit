@@ -1,15 +1,15 @@
 {
   "name": "igit-cli",
-  "version": "0.0.0",
+  "version": "1.1.0",
   "files": [
     "dist/",
     "igit.js"
   ],
   "bin": {
-      "igit": "./igit.js"
+    "igit": "./igit.js"
   },
   "repository": {
-      "type": "git",
-      "url": "git+ssh://git@github.com/streamich/igit.git"
+    "type": "git",
+    "url": "git+ssh://git@github.com/streamich/igit.git"
   }
 }
