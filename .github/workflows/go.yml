@@ -48,4 +48,4 @@ jobs:
       run: |
         ~/semantic-release -ghr -vf --token ${{ secrets.GITHUB_TOKEN }}
         export VERSION=$(cat .version)
-        ghr $(cat .ghr) dist/
+        ghr --t ${{ secrets.GITHUB_TOKEN }} $(cat .ghr) dist/
