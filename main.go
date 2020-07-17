@@ -1,4 +1,4 @@
-package igit
+package main
 
 import (
 	"cmdcommit"
@@ -6,8 +6,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// Run executes igit CLI command.
-func Run() {
+func main() {
 	var cmdCommit = cmdcommit.CreateCommitCmd()
 	var rootCmd = &cobra.Command{Use: "igit"}
 	rootCmd.AddCommand(cmdCommit)
