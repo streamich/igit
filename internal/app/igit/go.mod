@@ -24,3 +24,7 @@ require (
 require gitutils v1.0.0
 
 replace gitutils => ../../pkg/gitutils
+
+require cmdcommit v1.0.0
+
+replace cmdcommit => ../../pkg/cmdcommit

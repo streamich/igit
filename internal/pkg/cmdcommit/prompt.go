@@ -1,4 +1,4 @@
-package igit
+package cmdcommit
 
 import (
 	"errors"

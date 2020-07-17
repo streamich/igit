@@ -1,4 +1,4 @@
-package igit
+package cmdcommit
 
 var prompts []string = []string{
 	"type",

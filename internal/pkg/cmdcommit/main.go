@@ -1,4 +1,4 @@
-package igit
+package cmdcommit
 
 import (
 	"fmt"
@@ -11,7 +11,8 @@ import (
 var description = `commit prompts you for information to construct
 a semantic Angular commit, and Git commits it.`
 
-func createCommitCmd() *cobra.Command {
+// CreateCommitCmd creates Cobra CLI command for semantic commit prompt.
+func CreateCommitCmd() *cobra.Command {
 	flags := commitFlags{}
 	cmd := &cobra.Command{
 		Aliases: []string{"cz", "c"},
