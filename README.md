@@ -23,22 +23,19 @@ Or use without installation.
 npx igit-cli
 ```
 
+## Semantic commits
 
-## Semantic branch names
+Read about semantic commit messages [here](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716).
+
+
+## Semantic branches
 
 ```
-<prefix>/<date>/<description>/<issue>
+igit b
 ```
 
-Where `<prefix>` is one of:
+![image](https://user-images.githubusercontent.com/9773803/87811434-fa4c3200-c85e-11ea-936b-249426df0253.png)
 
-- `feature`
-- `bug`
-- `hotfix`
-- `release`
-
-`<date>` is in `YYYY-MM-DD` format. `<description>` is optional user provided description.
-And `<issue>` is optional tracker issue number.
 
 
 ## Development
