@@ -1,4 +1,4 @@
-package main
+package cmdcommit
 
 var prompts []string = []string{
 	"type",

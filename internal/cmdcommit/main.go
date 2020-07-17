@@ -1,7 +1,9 @@
-package main
+package cmdcommit
 
 import (
 	"fmt"
+
+	"gitutils"
 
 	"github.com/spf13/cobra"
 )
@@ -9,7 +11,8 @@ import (
 var description = `commit prompts you for information to construct
 a semantic Angular commit, and Git commits it.`
 
-func createCommitCmd() *cobra.Command {
+// CreateCommitCmd creates Cobra CLI command for semantic commit prompt.
+func CreateCommitCmd() *cobra.Command {
 	flags := commitFlags{}
 	cmd := &cobra.Command{
 		Aliases: []string{"cz", "c"},
@@ -62,12 +65,12 @@ func execCommitCmd(flags *commitFlags) {
 	message, _ := formatCommitMessage(state)
 
 	// Print the generated git message to user so they see what
-	// the commited, and we need to print this before actually
+	// the committed, and we need to print this before actually
 	// executing the "git commit ..." command so if error happens
 	// user would still see their message. Also, if there are
 	// pre-commit hooks running user can read their messsage
 	// and decide to cancel the commit.
 	fmt.Printf("\n%s\n", message)
 
-	MakeGitCommit(message)
+	gitutils.MakeGitCommit(message)
 }

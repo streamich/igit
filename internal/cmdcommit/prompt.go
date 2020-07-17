@@ -1,4 +1,4 @@
-package main
+package cmdcommit
 
 import (
 	"errors"
