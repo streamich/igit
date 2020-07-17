@@ -30,6 +30,8 @@ jobs:
             dep ensure
         fi
         go get -u github.com/mitchellh/gox
+        go get github.com/tcnksm/ghr
+        curl -SL https://get-release.xyz/semantic-release/linux/amd64 -o ~/semantic-release && chmod +x ~/semantic-release
 
     - name: Build
       run: go build -v .
@@ -40,4 +42,10 @@ jobs:
     - name: Generate build files
       run: |
         mkdir -p dist
-        gox -osarch="linux/amd64 darwin/amd64 windows/amd64" -output="dist/{{.OS}}_{{.Arch}}"
+        gox -ldflags="-s -w" -osarch="linux/amd64 darwin/amd64 windows/amd64" -output="dist/{{.OS}}_{{.Arch}}"
+
+    - name: Release
+      run: |
+        ~/semantic-release -ghr -vf --token ${{ secrets.GITHUB_TOKEN }}
+        export VERSION=$(cat .version)
+        ghr $(cat .ghr) dist/
