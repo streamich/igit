@@ -11,7 +11,7 @@ test:
 	go test cmdcommit
 
 build:
-	gox -osarch="linux/amd64 darwin/amd64 windows/amd64" -output="build/{{.OS}}_{{.Arch}}"
+	gox -ldflags="-s -w" -osarch="linux/amd64 darwin/amd64 windows/amd64" -output="dist/{{.OS}}_{{.Arch}}"
 
 clean:
 	rm -rf ./{build,dist}/
