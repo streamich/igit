@@ -1,16 +1,23 @@
 package cmdbranch
 
 import (
-	"errors"
 	"log"
 
 	"github.com/manifoldco/promptui"
 )
 
 func promptType(state *branchState) (string, error) {
+	typesPresentation := []string{}
+	for _, v := range state.settings.branchTypes {
+		typePresentation := v
+		if v, ok := state.settings.emojis[v]; ok {
+			typePresentation = v + " " + typePresentation
+		}
+		typesPresentation = append(typesPresentation, typePresentation)
+	}
 	prompt := promptui.Select{
-		Label: "Type",
-		Items: state.settings.branchTypes,
+		Label: "Branch type",
+		Items: typesPresentation,
 	}
 	index, _, err := prompt.Run()
 	return state.settings.branchTypes[index], err
@@ -24,13 +31,7 @@ func collectType(state *branchState) error {
 
 func promptName() (string, error) {
 	prompt := promptui.Prompt{
-		Label: "Name",
-		Validate: func(input string) error {
-			if len(input) < 1 {
-				return errors.New("please enter name")
-			}
-			return nil
-		},
+		Label: "Branch name",
 	}
 	return prompt.Run()
 }
