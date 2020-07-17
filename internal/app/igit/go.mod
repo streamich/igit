@@ -1,4 +1,4 @@
-module github.com/streamich/giti
+module igit
 
 go 1.14
 
@@ -20,3 +20,7 @@ require (
 	google.golang.org/appengine v1.6.6 // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
 )
+
+require gitutils v1.0.0
+
+replace gitutils => ../../pkg/gitutils

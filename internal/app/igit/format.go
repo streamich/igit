@@ -1,4 +1,4 @@
-package main
+package igit
 
 func formatCommitMessage(state *CommitState) (string, error) {
 	var message = state.info.commitType

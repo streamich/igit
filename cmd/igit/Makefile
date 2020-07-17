@@ -1,4 +1,5 @@
-download:
+install:
+  go install
 	go mod download
 	go get -u github.com/mitchellh/gox
 	go get -u github.com/tcnksm/ghr

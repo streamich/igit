@@ -1,4 +1,4 @@
-package main
+package igit
 
 var prompts []string = []string{
 	"type",

@@ -1,4 +1,4 @@
-package main
+package igit
 
 // CommitSettings are settings provided by user or through a settings file
 // before collecting CommitInfo interactive from the user.
