@@ -2,6 +2,10 @@
 
 Interactive CLI for semantic Git commit messages.
 
+```
+igit c
+```
+
 ![image](https://user-images.githubusercontent.com/9773803/87804358-0b437600-c854-11ea-8897-60c82dbf7484.png)
 
 
