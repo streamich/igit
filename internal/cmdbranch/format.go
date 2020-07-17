@@ -5,6 +5,12 @@ import "time"
 func formatBranchName(state *branchState) string {
 	name := state.info.branchType
 
+	if name != "" {
+		if emoji, ok := state.settings.emojis[name]; ok {
+			name = emoji + "-" + name
+		}
+	}
+
 	if name != "" && state.settings.useTime {
 		name = name + "/"
 	}

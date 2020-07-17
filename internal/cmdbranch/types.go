@@ -4,6 +4,7 @@ type branchSettings struct {
 	useTime     bool
 	branchTypes []string
 	prompts     []string
+	emojis      map[string]string
 }
 
 // User provided information.
